@@ -9,7 +9,7 @@ end
 
 rbenv_script "passenger-install-apache2-module" do
   rbenv_version node[:passenger][:ruby][:version]
-  code "passenger-install-apache2-module --auto"
+  code "passenger-install-apache2-module _#{node[:passenger][:version]}_ --auto"
   creates node[:passenger][:module_path]
 end
 
