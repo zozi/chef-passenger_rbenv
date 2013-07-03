@@ -7,4 +7,5 @@ gem_folder = node[:passenger][:ruby][:version] =~ /1\.8/ ? "1.8" : "1.9.1"
 default[:passenger][:ruby][:gems_dir] = "#{node[:passenger][:ruby][:root]}/lib/ruby/gems/#{gem_folder}"
 
 default[:passenger][:root_path] = "#{node[:passenger][:ruby][:gems_dir]}/gems/passenger-#{node[:passenger][:version]}"
-default[:passenger][:module_path] = "#{node[:passenger][:root_path]}/ext/apache2/mod_passenger.so"
+mod_folder = node[:passenger][:version] =~ /^4/ ? "libout" : "ext"
+default[:passenger][:module_path] = "#{node[:passenger][:root_path]}/#{mod_folder}/apache2/mod_passenger.so"
