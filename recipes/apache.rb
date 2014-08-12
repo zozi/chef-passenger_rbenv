@@ -16,16 +16,15 @@ rbenv_script "passenger-install-apache2-module" do
   creates node[:passenger][:module_path]
 end
 
-%w(conf load).each do |ext|
-  template "#{node[:apache][:dir]}/mods-available/passenger.#{ext}" do
-    source "passenger.#{ext}.erb"
-    owner "root"
-    group "root"
-    mode 0644
-    notifies :restart, "service[apache2]"
-  end
+template "#{node[:apache][:dir]}/mods-available/passenger.conf" do
+  source "passenger.conf.erb"
+  owner "root"
+  group "root"
+  mode 0644
+  notifies :restart, "service[apache2]"
 end
 
 apache_module "passenger" do
+  module_path node[:passenger][:module_path]
   enable true
 end
