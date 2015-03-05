@@ -17,5 +17,7 @@ mod_folder = case node[:passenger][:version]
              when /^4/
                patch = node[:passenger][:version].split(".").last.to_i
                patch < 6 ? "libout" : "buildout"
+             when /^5/
+               "buildout"
              end
 default[:passenger][:module_path] = "#{node[:passenger][:root_path]}/#{mod_folder}/apache2/mod_passenger.so"
