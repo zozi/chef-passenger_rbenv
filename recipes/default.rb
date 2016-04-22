@@ -1,4 +1,4 @@
-include_recipe "rbenv"
+include_recipe "ruby_rbenv"
 
 rbenv_gem "passenger" do
   rbenv_version node[:passenger][:ruby][:version]
