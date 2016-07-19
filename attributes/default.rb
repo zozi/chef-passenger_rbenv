@@ -23,3 +23,5 @@ mod_folder = case node[:passenger][:version]
                "buildout"
              end
 default[:passenger][:module_path] = "#{node[:passenger][:root_path]}/#{mod_folder}/apache2/mod_passenger.so"
+
+default[:passenger][:config] = {}

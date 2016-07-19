@@ -1,2 +1,7 @@
 PassengerRoot <%= @node[:passenger][:root_path] %>
 PassengerRuby <%= @node[:passenger][:ruby][:binary] %>
+
+# Custom passenger config
+<% @node[:passenger][:config].each do |key, value| %>
+Passenger<%= key %> <%= value %>
+<% end %>
