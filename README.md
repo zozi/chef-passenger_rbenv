@@ -13,6 +13,7 @@ Cookbook for installing passenger with rbenv.
 
 * `node[:passenger][:root_path]` - Root directory of the passenger gem.
 * `node[:passenger][:module_path]` - Path to the passenger module for apache.
+* `node[:passenger][:config]` - Custom config added to the passenger module configuration.
 
 ## License
 
