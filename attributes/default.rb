@@ -1,4 +1,4 @@
-default[:passenger][:version] = "3.0.19"
+default[:passenger][:version] = "5.0.29"
 
 default[:passenger][:ruby][:root] = "#{node[:rbenv][:root_path]}/versions/#{node[:rbenv][:global]}"
 default[:passenger][:ruby][:version] = node[:passenger][:ruby][:root].split("/").last
@@ -23,3 +23,5 @@ mod_folder = case node[:passenger][:version]
                "buildout"
              end
 default[:passenger][:module_path] = "#{node[:passenger][:root_path]}/#{mod_folder}/apache2/mod_passenger.so"
+
+default[:passenger][:config] = {}
