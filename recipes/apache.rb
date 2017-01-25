@@ -1,8 +1,18 @@
 include_recipe "passenger_rbenv::default"
 include_recipe "apache2"
 
-%w(apache2-prefork-dev libapr1-dev libcurl4-gnutls-dev).each do |pkg|
+%w(libapr1-dev libcurl4-gnutls-dev).each do |pkg|
   package pkg do
+    action :upgrade
+  end
+end
+
+if node["platform_version"] =~ /^16/
+  %w(apache2-dev libapr1-dev libaprutil1-dev).each do |pkg|
+    package pkg
+  end
+else
+  package 'apache2-prefork-dev' do
     action :upgrade
   end
 end
